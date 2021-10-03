@@ -1,15 +1,10 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GetStaticProps, NextComponentType } from "next";
 import { initializeApollo } from "src/apollo";
-
-const MyQuery = gql`
-  query MyQuery {
-    name
-  }
-`;
+import { GET_FILRED_DRUGS } from "./graphql/drugs";
 
 const Home: NextComponentType = () => {
-  const { data, loading } = useQuery(MyQuery);
+  const { data, loading } = useQuery(GET_FILRED_DRUGS, { variables: { keyword: "food" } });
 
   if (loading) return <span>loading...</span>;
 
@@ -24,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
-    query: MyQuery,
+    query: GET_FILRED_DRUGS,
   });
 
   return {
