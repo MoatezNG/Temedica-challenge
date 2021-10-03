@@ -1,13 +1,6 @@
-import { makeSchema, queryType } from "@nexus/schema";
-
-const Query = queryType({
-  definition(t) {
-    t.string("name", () => "Moatez");
-  },
-});
-
-const types = { Query };
+import { makeSchema } from "@nexus/schema";
+import * as QueryTypes from "./graphql";
 
 export const schema = makeSchema({
-  types,
+  types: [QueryTypes],
 });
