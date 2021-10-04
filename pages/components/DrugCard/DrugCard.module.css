@@ -1,0 +1,26 @@
+.card {
+  border: 0.063rem solid #555;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 55vw;
+}
+.drugTitle {
+  font-size: large;
+  font-weight: bold;
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.descriptionContainer {
+  border: 0.063rem dotted #555;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 991px) {
+  .card {
+    width: 80vw;
+  }
+}

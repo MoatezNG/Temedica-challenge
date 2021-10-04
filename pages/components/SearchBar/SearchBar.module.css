@@ -1,0 +1,49 @@
+.searchBar {
+  width: 55vw;
+  padding: 0.75rem 0rem 0.75rem 0.75rem;
+  box-sizing: border-box;
+  border: 0.063rem solid #555;
+  transition: 0.5s;
+  outline: none;
+}
+.searchBar:focus {
+  border: 0.063rem solid #555;
+}
+.resetButton {
+  position: absolute;
+  animation: reset-button-animation 1s ease alternate;
+  cursor: pointer;
+}
+.searchContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.searchContainer > .searchBar {
+  padding-right: 1.563rem;
+}
+.searchContainer > .resetButton {
+  position: absolute;
+  right: 4%;
+}
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0.6rem;
+}
+
+@keyframes reset-button-animation {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .searchBar {
+    width: 80vw;
+  }
+}

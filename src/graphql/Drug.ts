@@ -1,5 +1,5 @@
 import { objectType, queryField, stringArg } from "@nexus/schema";
-import * as data from "data/dataset.json";
+import data from "data/dataset.json";
 import fuzzyRegex from "src/helpers/fuzzyRegex";
 
 export const Drug = objectType({
@@ -23,9 +23,11 @@ export const DrugQuery = queryField((t) => {
       const { keyword } = args;
       const regexName = new RegExp(fuzzyRegex(keyword || ""), "gi");
       const regexDiseases = new RegExp(fuzzyRegex(keyword || ""), "gi");
-      const filtredDrugs = data.drugs.filter(
-        ({ name, diseases }) => name.match(regexName) || diseases.join(" ").match(regexDiseases)
-      );
+      const filtredDrugs = data.drugs
+        .filter(
+          ({ name, diseases }) => name.match(regexName) || diseases.join(" ").match(regexDiseases)
+        )
+        .map((drug) => ({ ...drug, released: drug.released.split("-").reverse().join("-") }));
       return keyword ? filtredDrugs : [];
     },
   });
