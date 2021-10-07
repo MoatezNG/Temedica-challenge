@@ -26,7 +26,7 @@ const DrugsList = ({ debouncedSearchTerm }: DrugsListProps) => {
           <div className={styles.resultsText}>{`showing ${data.length} results`}</div>
           <div>
             {data.map((drug) => (
-              <DrugCard drug={drug} />
+              <DrugCard key={drug.id} drug={drug} />
             ))}
           </div>
         </div>
